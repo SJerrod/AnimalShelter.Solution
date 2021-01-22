@@ -19,9 +19,26 @@ namespace AnimalShelterApi.Controllers
 
     // GET api/animals
     [HttpGet]
-    public ActionResult<IEnumerable<Cat>> Get()
+    public ActionResult<IEnumerable<Cat>> Get(string catGender, int catAge, string catBreed)
     {
-        return _db.Cats.ToList();
+        var query = _db.Cats.AsQueryable();
+
+        if (catGender != null)
+        {
+            query = query.Where(entry => entry.CatGender == catGender);
+        }
+
+        if (catAge != 0)
+        {
+            query = query.Where(entry => entry.CatAge == catAge);
+        }
+
+        if (catBreed != null)
+        {
+            query = query.Where(entry => entry.CatBreed == catBreed);
+        }
+        
+        return query.ToList();
     }
 
     // POST api/Cats
