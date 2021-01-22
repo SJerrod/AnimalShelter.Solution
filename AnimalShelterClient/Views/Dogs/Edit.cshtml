@@ -9,26 +9,22 @@
     @Html.HiddenFor(model => model.DogId)
 
     @Html.Label("Name:")
-    @Html.EditorFor(model => model.DogName,
-        new {@required="required"})
+    @Html.EditorFor(model => model.DogName, new {@required="required"})
     <br>
     @Html.Label("Gender:")
-    @Html.EditorFor(model => model.DogGender,
-        new {@required="required"})
+    @Html.EditorFor(model => model.DogGender, new {@required="required"})
     <br>
     @Html.Label("Age:")
-    @Html.EditorFor(model => model.DogAge,
-        new {@required="required"})
+    @Html.EditorFor(model => model.DogAge, new {@required="required"})
     <br>
     @Html.Label("Breed:")
-    @Html.EditorFor(model => model.DogBreed,
-        new {@required="required"})
+    @Html.EditorFor(model => model.DogBreed, new {@required="required"})
     <br>
     @Html.Label("Temperment:")
-    @Html.EditorFor(model => model.DogTemperment,
-        new {@required="required"})
+    @Html.EditorFor(model => model.DogTemperment, new {@required="required"})
     
     <input type="submit" value="Save Changes" />
 }
 
-<p>@Html.ActionLink("Back to Dogs list.", "Index", new {@class="btn btn-light btn-sm"})</p>
+<p class="nav">@Html.ActionLink("Cancel Edit", "Details", null, new {id = Model.DogId})</p>
+<p class="nav">@Html.ActionLink("Back to Dogs list.", "Index", new {@class="btn btn-light btn-sm"})</p>

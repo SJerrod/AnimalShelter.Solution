@@ -4,3 +4,24 @@
 
 <h3>Enter new dogs information.</h3>
 <hr />
+@using (Html.BeginForm())
+{
+    @Html.Label("Name")
+    @Html.TextBoxFor(model => model.DogName, new {@required="required"})
+    <br>
+    @Html.Label("Gender")
+    @Html.TextBoxFor(model => model.DogGender, new {@required="required"})
+    <br>
+    @Html.Label("Age")
+    @Html.TextBoxFor(model => model.DogAge, new {@required="required"})
+    <br>
+    @Html.Label("Breed")
+    @Html.TextBoxFor(model => model.DogBreed, new {@required="required"})
+    <br>
+    @Html.Label("Temperment")
+    @Html.TextBoxFor(model => model.DogTemperment, new {@required="required"})
+    
+    <input type="submit" value="Add Dog" />
+}
+
+<p class="nav">@Html.ActionLink("Cancel new dog entry", "Index")</p>

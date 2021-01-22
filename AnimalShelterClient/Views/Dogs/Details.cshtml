@@ -12,5 +12,6 @@
     <li>Temperment: @Model.DogTemperment</li>
 </ul>
 
-<p>@Html.ActionLink("Edit Dog", "Edit", new { id = Model.DogId})</p>
-<p>@Html.ActionLink("Delete Dog", "Delete", new { id = Model.DogId})</p>
+<p class="nav">@Html.ActionLink("Edit Dog", "Edit", new { id = Model.DogId})</p>
+<p class="nav">@Html.ActionLink("Delete Dog", "Delete", new { id = Model.DogId})</p>
+<p class="nav">@Html.ActionLink("Back to Dog List", "Index")</p>

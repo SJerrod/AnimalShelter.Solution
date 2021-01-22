@@ -1,13 +1,23 @@
 <h1>Dogs List:</h1>
 
-<ol>
-@foreach (Dog dog in Model)
+@if (@Model.Count == 0)
 {
-    <ul>
-        <li>Name: @dog.DogName</li>
-        <li>Age: @dog.DogAge</li>
-    </ul>
-    <a href="/Dogs/Details/@(dog.DogId)"><p>View Details</p></a>
-    <br>
+    <h3>Sorry but it looks like all of our Dogs have found new homes.</h3>
 }
+else
+{
+    <p>We currently have @Model.Count Dog(s).</p>
+}
+<ol>
+    @foreach (Dog dog in Model)
+    {
+        <ul>
+            <li>Name: @dog.DogName</li>
+            <li>Breed: @dog.DogBreed</li>
+        </ul>
+        <a href="/Dogs/Details/@(dog.DogId)"><p>View Details</p></a>
+        <br>
+    }
 </ol>
+
+<p class="nav">@Html.ActionLink("Add new Dog", "Create")</p>
