@@ -10,67 +10,63 @@ namespace AnimalShelterApi.Controllers
     [ApiController]
     public class DogsController : ControllerBase
     {
-    private AnimalShelterApiContext _db;
+        private AnimalShelterApiContext _db;
 
-    public DogsController(AnimalShelterApiContext db)
-    {
-        _db = db;
-    }
-
-    // GET api/animals
-    [HttpGet]
-    public ActionResult<IEnumerable<Dog>> Get(string dogGender, int dogAge, string dogBreed)
-    {
-        var query = _db.Dogs.AsQueryable();
-
-        if (dogGender != null)
+        public DogsController(AnimalShelterApiContext db)
         {
-            query = query.Where(entry => entry.DogGender == dogGender);
+            _db = db;
         }
 
-        if (dogAge != 0)
+        [HttpGet]
+        public ActionResult<IEnumerable<Dog>> Get(string dogGender, int dogAge, string dogBreed)
         {
-            query = query.Where(entry => entry.DogAge == dogAge);
+            var query = _db.Dogs.AsQueryable();
+
+            if (dogGender != null)
+            {
+                query = query.Where(entry => entry.DogGender == dogGender);
+            }
+
+            if (dogAge != 0)
+            {
+                query = query.Where(entry => entry.DogAge == dogAge);
+            }
+
+            if (dogBreed != null)
+            {
+                query = query.Where(entry => entry.DogBreed == dogBreed);
+            }
+            
+            return query.ToList();
         }
 
-        if (dogBreed != null)
+        [HttpPost]
+        public void Post([FromBody] Dog dog)
         {
-            query = query.Where(entry => entry.DogBreed == dogBreed);
+            _db.Dogs.Add(dog);
+            _db.SaveChanges();
         }
-        
-        return query.ToList();
-    }
 
-    // POST api/Dogs
-    [HttpPost]
-    public void Post([FromBody] Dog dog)
-    {
-        _db.Dogs.Add(dog);
-        _db.SaveChanges();
-    }
+        [HttpGet("{id}")]
+        public ActionResult<Dog> Get(int id)
+        {
+            return _db.Dogs.FirstOrDefault(entry => entry.DogId == id);
+        }
 
-    // GET api/animals/5
-    [HttpGet("{id}")]
-    public ActionResult<Dog> Get(int id)
-    {
-        return _db.Dogs.FirstOrDefault(entry => entry.DogId == id);
-    }
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Dog dog)
+        {
+            dog.DogId = id;
+            _db.Entry(dog).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
 
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] Dog dog)
-    {
-        dog.DogId = id;
-        _db.Entry(dog).State = EntityState.Modified;
-        _db.SaveChanges();
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            var dogToDelete = _db.Dogs.FirstOrDefault(entry => entry.DogId == id);
+            _db.Dogs.Remove(dogToDelete);
+            _db.SaveChanges();
+        }
     }
-
-    // DELETE api/animals/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-      var dogToDelete = _db.Dogs.FirstOrDefault(entry => entry.DogId == id);
-      _db.Dogs.Remove(dogToDelete);
-      _db.SaveChanges();
-    }
-  }
 }

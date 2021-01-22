@@ -2,7 +2,7 @@
 
 <p align="center">
     <a href="https://github.com/SJerrod">
-        <img style="border-radius: 100%; height: 50px; width: auto" src="https://avatars1.githubusercontent.com/u/65928050?s=460&u=eae77ab164dde31ddbe95627ad67c5d7072ca033&v=4">
+        <img style="border-radius: 100%; height: 250px; width: auto" src="https://avatars1.githubusercontent.com/u/65928050?s=460&u=eae77ab164dde31ddbe95627ad67c5d7072ca033&v=4">
     </a>
 </p>
 
@@ -62,7 +62,7 @@ AppSettings
 Import Database using Entity Framework Core
 * Type `dotnet ef database update` into the terminal to create your database tables.
 
-## 🛰️ API Documentation
+# 🛰️ API Documentation
 Explore the API endpoints in Postman or a browser.
 
 #### Example Query
@@ -179,7 +179,6 @@ https://localhost:5004/api/cats/?breed=mainecoon&age=6
 }
 ```
 
-..........................................................................................
 
 # 🦠 Bugs / Issues
 

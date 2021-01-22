@@ -10,67 +10,63 @@ namespace AnimalShelterApi.Controllers
     [ApiController]
     public class CatsController : ControllerBase
     {
-    private AnimalShelterApiContext _db;
+        private AnimalShelterApiContext _db;
 
-    public CatsController(AnimalShelterApiContext db)
-    {
-        _db = db;
-    }
-
-    // GET api/animals
-    [HttpGet]
-    public ActionResult<IEnumerable<Cat>> Get(string catGender, int catAge, string catBreed)
-    {
-        var query = _db.Cats.AsQueryable();
-
-        if (catGender != null)
+        public CatsController(AnimalShelterApiContext db)
         {
-            query = query.Where(entry => entry.CatGender == catGender);
+            _db = db;
         }
 
-        if (catAge != 0)
+        [HttpGet]
+        public ActionResult<IEnumerable<Cat>> Get(string catGender, int catAge, string catBreed)
         {
-            query = query.Where(entry => entry.CatAge == catAge);
+            var query = _db.Cats.AsQueryable();
+
+            if (catGender != null)
+            {
+                query = query.Where(entry => entry.CatGender == catGender);
+            }
+
+            if (catAge != 0)
+            {
+                query = query.Where(entry => entry.CatAge == catAge);
+            }
+
+            if (catBreed != null)
+            {
+                query = query.Where(entry => entry.CatBreed == catBreed);
+            }
+            
+            return query.ToList();
         }
 
-        if (catBreed != null)
+        [HttpPost]
+        public void Post([FromBody] Cat cat)
         {
-            query = query.Where(entry => entry.CatBreed == catBreed);
+            _db.Cats.Add(cat);
+            _db.SaveChanges();
         }
-        
-        return query.ToList();
-    }
 
-    // POST api/Cats
-    [HttpPost]
-    public void Post([FromBody] Cat cat)
-    {
-        _db.Cats.Add(cat);
+        [HttpGet("{id}")]
+        public ActionResult<Cat> Get(int id)
+        {
+            return _db.Cats.FirstOrDefault(entry => entry.CatId == id);
+        }
+
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Cat cat)
+        {
+            cat.CatId = id;
+            _db.Entry(cat).State = EntityState.Modified;
+            _db.SaveChanges();
+        }
+
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        var catToDelete = _db.Cats.FirstOrDefault(entry => entry.CatId == id);
+        _db.Cats.Remove(catToDelete);
         _db.SaveChanges();
+        }
     }
-
-    // GET api/animals/5
-    [HttpGet("{id}")]
-    public ActionResult<Cat> Get(int id)
-    {
-        return _db.Cats.FirstOrDefault(entry => entry.CatId == id);
-    }
-
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] Cat cat)
-    {
-        cat.CatId = id;
-        _db.Entry(cat).State = EntityState.Modified;
-        _db.SaveChanges();
-    }
-
-    // DELETE api/animals/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-      var catToDelete = _db.Cats.FirstOrDefault(entry => entry.CatId == id);
-      _db.Cats.Remove(catToDelete);
-      _db.SaveChanges();
-    }
-  }
 }
