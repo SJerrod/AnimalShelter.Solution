@@ -1,0 +1,13 @@
+<h1>All Dogs:</h1>
+
+<ol>
+@foreach (Dog dog in Model)
+{
+    <ul>
+        <li>Name: @dog.DogName</li>
+        <li>Age: @dog.DogAge</li>
+    </ul>
+    <a href="/Dogs/Details/@(dog.DogId)"><p>View Details</p></a>
+    <br>
+}
+</ol>
