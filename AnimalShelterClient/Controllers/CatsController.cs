@@ -10,18 +10,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AnimalShelterClient.Controllers
 {
-    public class DogsController : Controller
+    public class CatsController : Controller
     {
         public IActionResult Index()
         {
-            var allDogs = Dog.GetDogs();
-            return View(allDogs);
+            var allCats = Cat.GetCats();
+            return View(allCats);
         }
 
         public IActionResult Details(int id)
         {
-            var thisDog = Dog.GetDetails(id);
-            return View(thisDog);
+            var thisCat = Cat.GetDetails(id);
+            return View(thisCat);
         }
 
         public IActionResult Create()
@@ -30,28 +30,28 @@ namespace AnimalShelterClient.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Dog dog)
+        public IActionResult Create(Cat cat)
         {
-            Dog.Post(dog);
+            Cat.Post(cat);
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            var thisDog = Dog.GetDetails(id);
-            return View(thisDog);
+            var thisCat = Cat.GetDetails(id);
+            return View(thisCat);
         }
 
         [HttpPost]
-        public IActionResult Edit(Dog dog)
+        public IActionResult Edit(Cat cat)
         {
-            Dog.Put(dog);
+            Cat.Put(cat);
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            Dog.Delete(id);
+            Cat.Delete(id);
             return RedirectToAction("Index");
         }
     }

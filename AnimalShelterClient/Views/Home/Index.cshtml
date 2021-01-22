@@ -14,21 +14,11 @@
         <div class="col-md-6">
             <h3>Dogs:</h3>
             <br>
-            @* @foreach(Dog dog in Model["dog"])
-            {
-                <li>@Html.ActionLink($"{dog.DogName}", "Details", "Dogs", new { id = dog.DogId })</li>
-            }
-            <p class="count">We currently have @Model["dog"].Count dog(s).</p> *@
             <p class="nav">@Html.ActionLink("Check available Dogs", "Index", "Dogs")</p>
         </div>
         <div class="col-md-6">
             <h3>Cats:</h3>
             <br>
-            @* @foreach(Cat cat in Model["cat"])
-            {
-                <li>@Html.ActionLink($"{cat.CatName}", "Details", "Cats", new { id = cat.CatId })</li>
-            }
-            <p class="count">We currently have @Model["cat"].Count cat(s).</p> *@
             <p class="nav">@Html.ActionLink("Check available Cats", "Index", "Cats")</p>
         </div>
     </div>

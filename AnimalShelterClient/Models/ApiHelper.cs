@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using RestSharp;
+using System.Threading.Tasks;
 
 namespace AnimalShelterClient.Models
 {
