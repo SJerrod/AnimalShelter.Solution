@@ -1,0 +1,34 @@
+@model AnimalShelterClient.Models.Dog
+
+<h1>Edit Dog</h1>
+
+<h3>Edit Info for: @Html.DisplayFor(model => model.DogName)</h3>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.DogId)
+
+    @Html.Label("Name:")
+    @Html.EditorFor(model => model.DogName,
+        new {@required="required"})
+    <br>
+    @Html.Label("Gender:")
+    @Html.EditorFor(model => model.DogGender,
+        new {@required="required"})
+    <br>
+    @Html.Label("Age:")
+    @Html.EditorFor(model => model.DogAge,
+        new {@required="required"})
+    <br>
+    @Html.Label("Breed:")
+    @Html.EditorFor(model => model.DogBreed,
+        new {@required="required"})
+    <br>
+    @Html.Label("Temperment:")
+    @Html.EditorFor(model => model.DogTemperment,
+        new {@required="required"})
+    
+    <input type="submit" value="Save Changes" />
+}
+
+<p>@Html.ActionLink("Back to Dogs list.", "Index", new {@class="btn btn-light btn-sm"})</p>

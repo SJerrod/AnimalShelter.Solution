@@ -1,0 +1,14 @@
+@model AnimalShelterClient.Models.Dog
+
+<h1>Delete Dog</h1>
+
+<h3>Are you sure you wish to remove this Dog?</h3>
+<hr />
+@Html.DisplayFor(model => model.DogName)
+@using (Html.BeginForm())
+{
+    <br>
+    <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+}
+<br>
+<p>@Html.ActionLink("Cancel", "Details", null, new {id = Model.DogId})</p>

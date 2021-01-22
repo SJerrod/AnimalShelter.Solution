@@ -1,0 +1,16 @@
+@model AnimalShelterClient.Models.Dog
+
+<h1>Details</h1>
+
+<h3>Display Info for: @Html.DisplayFor(model => model.DogName)</h3>
+
+<ul>
+    <li>Name: @Model.DogName</li>
+    <li>Gender: @Model.DogGender</li>
+    <li>Age: @Model.DogAge</li>
+    <li>Breed: @Model.DogBreed</li>
+    <li>Temperment: @Model.DogTemperment</li>
+</ul>
+
+<p>@Html.ActionLink("Edit Dog", "Edit", new { id = Model.DogId})</p>
+<p>@Html.ActionLink("Delete Dog", "Delete", new { id = Model.DogId})</p>
