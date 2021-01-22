@@ -1,0 +1,17 @@
+@model AnimalShelterClient.Models.Cat
+
+<h1>Details</h1>
+
+<h3>Display Info for: @Html.DisplayFor(model => model.CatName)</h3>
+
+<ul>
+    <li>Name: @Model.CatName</li>
+    <li>Gender: @Model.CatGender</li>
+    <li>Age: @Model.CatAge</li>
+    <li>Breed: @Model.CatBreed</li>
+    <li>Temperment: @Model.CatTemperment</li>
+</ul>
+
+<p class="nav">@Html.ActionLink("Edit Cat", "Edit", new { id = Model.CatId})</p>
+<p class="nav">@Html.ActionLink("Delete Cat", "Delete", new { id = Model.CatId})</p>
+<p class="nav">@Html.ActionLink("Back to Cat List", "Index")</p>

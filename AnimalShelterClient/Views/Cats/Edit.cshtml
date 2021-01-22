@@ -1,0 +1,30 @@
+@model AnimalShelterClient.Models.Cat
+
+<h1>Edit Cat</h1>
+
+<h3>Edit Info for: @Html.DisplayFor(model => model.CatName)</h3>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.CatId)
+
+    @Html.Label("Name:")
+    @Html.EditorFor(model => model.CatName, new {@required="required"})
+    <br>
+    @Html.Label("Gender:")
+    @Html.EditorFor(model => model.CatGender, new {@required="required"})
+    <br>
+    @Html.Label("Age:")
+    @Html.EditorFor(model => model.CatAge, new {@required="required"})
+    <br>
+    @Html.Label("Breed:")
+    @Html.EditorFor(model => model.CatBreed, new {@required="required"})
+    <br>
+    @Html.Label("Temperment:")
+    @Html.EditorFor(model => model.CatTemperment, new {@required="required"})
+    
+    <input type="submit" value="Save Changes" />
+}
+
+<p class="nav">@Html.ActionLink("Cancel Edit", "Details", null, new {id = Model.CatId})</p>
+<p class="nav">@Html.ActionLink("Back to Cats list.", "Index", new {@class="btn btn-light btn-sm"})</p>

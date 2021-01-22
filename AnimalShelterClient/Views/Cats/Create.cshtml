@@ -1,0 +1,27 @@
+@model AnimalShelterClient.Models.Cat
+
+<h1>Add New Cat</h1>
+
+<h3>Enter new cats information.</h3>
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.Label("Name")
+    @Html.TextBoxFor(model => model.CatName, new {@required="required"})
+    <br>
+    @Html.Label("Gender")
+    @Html.TextBoxFor(model => model.CatGender, new {@required="required"})
+    <br>
+    @Html.Label("Age")
+    @Html.TextBoxFor(model => model.CatAge, new {@required="required"})
+    <br>
+    @Html.Label("Breed")
+    @Html.TextBoxFor(model => model.CatBreed, new {@required="required"})
+    <br>
+    @Html.Label("Temperment")
+    @Html.TextBoxFor(model => model.CatTemperment, new {@required="required"})
+    
+    <input type="submit" value="Add Cat" />
+}
+
+<p class="nav">@Html.ActionLink("Cancel new cat entry", "Index")</p>
