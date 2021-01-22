@@ -18,7 +18,7 @@
 |------|----------------|
 |[Jerrod Styrk](https://www.linkedin.com/in/styrk-jerrodm/)|[SJerrod](https://github.com/SJerrod)|
 
-# ℹ️ Description
+# 📖 Description
 
 This application will allow you to enter Either a Dog or cat into a database, you can also alter current records i.e Edit/ Create/ Delete new or old dogs or cats.
 
@@ -62,8 +62,126 @@ AppSettings
 Import Database using Entity Framework Core
 * Type `dotnet ef database update` into the terminal to create your database tables.
 
+## 🛰️ API Documentation
+Explore the API endpoints in Postman or a browser.
 
-# 🪲 Bugs / Issues
+#### Example Query
+```
+https://localhost:5004/api/dogs/?breed=terrior&gender=male
+```
+
+To use default, _don't include_ `breed` or `gender`.
+
+..........................................................................................
+
+### Endpoints
+Base URL: `https://localhost:5004`
+
+#### HTTP Request Structure
+```
+GET /api/{component}
+POST /api/{component}
+GET /api/{component}/{id}
+PUT /api/{component}/{id}
+DELETE /api/{component}/{id}
+```
+
+#### Example Query
+```
+https://localhost:5004/api/dogs/6
+```
+
+#### Sample JSON Response
+```
+{
+    "Id": 6,
+    "DogName": "Terry",
+    "DogGender": "Male",
+    "DogAge": 4,
+    "DogBreed": "Terrior",
+    "DogTemperment": "Terrible"
+}
+```
+
+..........................................................................................
+
+### Dogs
+Access information on Dogs currently housed at the shelter.
+
+#### HTTP Request
+```
+GET /api/dogs
+POST /api/dogs
+GET /api/dogs/{id}
+PUT /api/dogs/{id}
+DELETE /api/dogs/{id}
+```
+
+#### Path Parameters
+| Parameter | Type | Default | Required | Description |
+| :---: | :---: | :---: | :---: | --- |
+| gender | string | none | false | Return matches in gender.
+| age | int | none | false | Return matches in age. |
+| breed | string | none | false | Return matches in breed |
+
+#### Example Query
+```
+https://localhost:5004/api/dogs/?breed=boxer&gender=female
+```
+
+#### Sample JSON Response
+```
+{
+    "Id": 3,
+    "DogName": "Moxer",
+    "DogGender": "Female",
+    "DogAge": 2,
+    "DogBreed": "Boxer",
+    "DogTemperment": "Rockstar"
+}
+```
+
+..........................................................................................
+
+### Cats
+Access information on Cats currently housed at the shelter.
+
+#### HTTP Request
+```
+GET /api/cats
+POST /api/cats
+GET /api/cats/{id}
+PUT /api/cats/{id}
+DELETE /api/cats/{id}
+```
+
+#### Path Parameters
+| Parameter | Type | Default | Required | Description |
+| :---: | :---: | :---: | :---: | --- |
+| gender | string | none | false | Return matches in gender.
+| age | int | none | false | Return matches in age. |
+| breed | string | none | false | Return matches in breed |
+
+#### Example Query
+```
+https://localhost:5004/api/cats/?breed=mainecoon&age=6
+```
+
+#### Sample JSON Response
+```
+{
+    "Id": 34,
+    "CatName": "Boon",
+    "CatGender": "Male",
+    "CatAge": 6,
+    "CatBreed": "Mainecoon",
+    "CatTemperment": "Lampoon"
+}
+```
+
+..........................................................................................
+
+# 🦠 Bugs / Issues
 
 * None currently to note
 
@@ -76,16 +194,17 @@ Import Database using Entity Framework Core
 <details>
   <summary>Expand Tech/tools</summary>
 
+* [ASP.NET Core MVC](https://docs.microsoft.com/en-us/aspnet/core/mvc/overview?view=aspnetcore-3.1)
 * [Bootstrap Components](https://getbootstrap.com/docs/3.3/components/)
-* C#
-* Razor
-* Entity Framework Core
-* MySql
-* MySql Workbench
+* [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
+* [Entity Framework Core 2.2.0](https://docs.microsoft.com/en-us/ef/core/)
+* [MySQL 8.0.20 for Linux](https://dev.mysql.com/)
+* [Postman](postman.com)
+* [Swagger - NSwag 13.3.0](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-nswag?view=aspnetcore-3.1&tabs=visual-studio)
 
 </details>
 
-# ©️ License & Copyright
+# ⚖️ License & Copyright
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
