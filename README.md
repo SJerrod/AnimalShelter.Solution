@@ -178,11 +178,22 @@ https://localhost:5004/api/cats/?breed=mainecoon&age=6
     "CatTemperment": "Lampoon"
 }
 ```
+### Referenced Material for Swagger/Swashbuckle
+
+* [Microsoft Docs: Swagger Overview](https://docs.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger?view=aspnetcore-5.0)
+* [Microsoft Docs: Get Started with Swashbuckle](https://docs.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-5.0&tabs=visual-studio)
+* [GitHub Swashbuckle.AspNetCore README.md](https://github.com/domaindrivendev/Swashbuckle.AspNetCore/blob/master/README.md)
+
+### Using SwaggerUI / Note
+
+Launch the project from the `AnimalShelterApi` project directory by typing `dotnet run` into the terminal. Input `http://localhost:5000/swagger` into postman to view Swashbuckle SwaggerUI. As Ive seen Swagger is a great way to generate 
 
 
 # 🦠 Bugs / Issues
 
 * None currently to note
+
+* While Swagger seems to be getting some results in postman it doesnt appear to show up in the browser.
 
 # ☎️ Support / Contact Details
 
